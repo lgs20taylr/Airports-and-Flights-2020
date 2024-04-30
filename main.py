@@ -39,20 +39,20 @@ class Plane:
 
 class Flight:
     def __init__(self):
-        self.UKAirport = False
-        self.overseasAirport = False
+        self.UKAirport = "LPL"
+        self.overseasAirport = Airport("NON", "NONE", 0, 0)
         self.distance = self.overseasAirport.distanceFromLPL if self.UKAirport == "LPL" else self.overseasAirport.distanceFromBOH
-        self.plane = False
+        self.plane = Plane("Medium Narrow Body")
         self.firstClassSeats = 0
         self.standardClassSeats = 220 - self.firstClassSeats
-        self.standardSeatPrice = False
-        self.firstClassSeatPrice = False
-        self.perSeatFlightCost = False
-        self.totalFlightCost = False
-        self.flightIncome = False
-        self.flightProfit = False
+        self.standardSeatPrice = 0
+        self.firstClassSeatPrice = decimal.Decimal(0)
+        self.perSeatFlightCost = decimal.Decimal(0)
+        self.totalFlightCost = decimal.Decimal(0)
+        self.flightIncome = decimal.Decimal(0)
+        self.flightProfit = decimal.Decimal(0)
     def __str__(self):
-        return f"## Flight ##\nFrom: {self.UKAirport}\nTo: {self.overseasAirport.IATACode}\nDistance: {self.distance}\n# Plane #\nPlane Type: {self.plane.planeType}\nMaximum Flight Range: {self.plane.maxiFlightRange}\nRunning Cost/Seat/100km: {self.plane.runningCostPer100KM}\nCapacity If All Seats Are Standard:{self.plane.allStandardCapacity}\nStandard Class Seats: {self.standardClassSeats}\nStandard Class Seat Price: {self.standardSeatPrice}\nFirst Class Seats: {self.firstClassSeats}\nFirst Class Seat Price: {self.firstClassSeatPrice}\n# Income #\n"
+        return f"## Flight ##\nFrom: {self.UKAirport}\nTo: {self.overseasAirport.IATACode}\nDistance: {self.distance}\n# Plane #\nPlane Type: {self.plane.planeType}\nMaximum Flight Range: {self.plane.maxFlightRange}\nRunning Cost/Seat/100km: {self.plane.runningCostPer100KM}\nCapacity If All Seats Are Standard: {self.plane.allStandardCapacity}\nStandard Class Seats: {self.standardClassSeats}\nStandard Class Seat Price: {self.standardSeatPrice}\nFirst Class Seats: {self.firstClassSeats}\nFirst Class Seat Price: {self.firstClassSeatPrice}\n# Income #\nFlight Cost Per Seat: {self.perSeatFlightCost}\nTotal Cost of Flight: {self.totalFlightCost}\nFlight Income: {self.flightIncome}\nFlight Profit: {self.flightProfit}"
     # TODO Add:
     # TODO cost per seat, total cost, income, profit
     
@@ -68,6 +68,7 @@ def classTests():
     f = Flight()
     f.UKAirport = "LPL"
     f.overseasAirport = a
+    f.plane = p
     f.firstClassSeats = 20
     print(a)
     print("\n")
@@ -75,6 +76,7 @@ def classTests():
     print("\n")
     print(f)
 
-if __name__ == "__main__":
-    """Entry point of program"""
-    main()
+# if __name__ == "__main__":
+#     """Entry point of program"""
+#     main()
+classTests()
