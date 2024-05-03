@@ -89,8 +89,10 @@ def mainMenu(airports, newFlight):
   match choiceOfAction:
     case "1":
       newFlight = enterAirportDetails(airports, newFlight)
+      mainMenu(airports, newFlight)
     case "2":
       newFlight = enterFlightDetails(newFlight)
+      mainMenu(airports, newFlight)
     case "3":
       enterPricePlanAndCalculateProfit(newFlight)
     case "4":
@@ -98,12 +100,23 @@ def mainMenu(airports, newFlight):
     case "5":
       print("Thank you for using the program. Goodbye.\n")
       sys.exit()
+    case "X":
+      print("Hello world")
+      mainMenu(airports, newFlight)
     case _:
       print("Invalid choice of action.\n\n")
       mainMenu(airports, newFlight)
 
 def enterAirportDetails(airports, newFlight):
-  pass
+  selectedAirport = input("Please enter the IATA code of the destination airport.").upper()
+  if len(selectedAirport) > 3:
+    print("Invalid IATA code.")
+  else:
+    try:
+      newFlight.overseasAirport = airports[selectedAirport]
+    except Exception:
+      print("This airport does not exist or is not serviced.")
+  return newFlight
 
 def enterFlightDetails(newFlight):
   pass
