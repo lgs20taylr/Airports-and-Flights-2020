@@ -92,7 +92,6 @@ validate the following:
 	UK Airport exists
 	Overseas Airport exists
 	Plane exists
-	Number of First-class seats exists
 	max flight range of plane >= distance between UK and Overseas
 enter price of first and standard class seats
 calculate the following and stick ''em inside the flight object:
