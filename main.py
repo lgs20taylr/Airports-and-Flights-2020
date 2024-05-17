@@ -186,6 +186,9 @@ def enterPricePlanAndCalculateProfit(newFlight):
     if firstClassSeats and firstClassSeats < newFlight.plane.minFirstClassSeats:
       print("Too few First-Class seats entered.")
       return newFlight
+    elif firstClassSeats * 2 > newFlight.plane.allStandardCapacity:
+      print("Too many First-Class seats entered.")
+      return newFlight
     newFlight.setStandardClassSeats(firstClassSeats)
     firstClassSeatPrice = decimal.Decimal(
         input("Enter the price of a First-Class seat."))
